@@ -21,7 +21,6 @@ class CreateMultimediaTable extends Migration
             $table->timestamps();
 
             $table->foreign('flat_id')->references('id')->on('flats');
-
         });
     }
 

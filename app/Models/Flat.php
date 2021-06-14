@@ -18,6 +18,10 @@ class Flat extends Model
         'endDate',
     ];
 
+    protected $casts =[
+        'end_date'=>'date'
+    ];
+
     use HasFactory;
 
     public function layouts(){

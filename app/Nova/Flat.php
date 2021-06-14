@@ -2,11 +2,14 @@
 
 namespace App\Nova;
 
+
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Currency;
 use Laravel\Nova\Fields\Date;
+use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\Gravatar;
 use Laravel\Nova\Fields\HasMany;
+use Laravel\Nova\Fields\HasManyThrough;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Number;
@@ -58,9 +61,10 @@ class Flat extends Resource
             Text::make('Quantity of Balcony','quantityBalcony'),
             Text::make('Quantity of Bathroom','quantityBathroom'),
             Number::make( 'distance to sea','distanceToSea'),
-            Date::make('endDate'),
+            Date::make('end_date'),
             HasMany::make('layouts'),
             HasMany::make('infrastructures'),
+            HasMany::make('multimedia'),
         ];
     }
 

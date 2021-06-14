@@ -15,11 +15,10 @@ class CreateInfrastructuresTable extends Migration
     {
         Schema::create('infrastructures', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('flat_id')->unsigned();
             $table->string('title');
             $table->timestamps();
 
-            $table->foreign('flat_id')->references('id')->on('flats');
+
         });
     }
 

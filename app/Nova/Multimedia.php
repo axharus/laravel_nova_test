@@ -3,9 +3,14 @@
 namespace App\Nova;
 
 use Ebess\AdvancedNovaMediaLibrary\Fields\Files;
+use Ebess\AdvancedNovaMediaLibrary\Fields\Images;
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\File;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Http\Requests\NovaRequest;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class Multimedia extends Resource
 {
@@ -28,6 +33,7 @@ class Multimedia extends Resource
      *
      * @var array
      */
+
     public static $search = [
         'id',
     ];
@@ -41,8 +47,11 @@ class Multimedia extends Resource
     public function fields(Request $request)
     {
         return [
+
             ID::make(__('ID'), 'id')->sortable(),
-            Files::make('File','title'),
+            BelongsTo::make('flat'),
+//            Files::make('multimedia'),
+            File::make('image or video','multimedia'),
 
         ];
     }

@@ -24,8 +24,7 @@ class CreateFlatsTable extends Migration
             $table->string('locationImage')->nullable();
             $table->integer('square');
             $table->integer('distanceToSea');
-            $table->date('endDate');
-
+            $table->date('end_date');
 
             $table->timestamps();
         });
