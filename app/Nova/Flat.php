@@ -3,7 +3,9 @@
 namespace App\Nova;
 
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Currency;
 use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\DateTime;
@@ -62,8 +64,8 @@ class Flat extends Resource
             Text::make('Quantity of Bathroom','quantityBathroom'),
             Number::make( 'distance to sea','distanceToSea'),
             Date::make('end_date'),
-            HasMany::make('layouts'),
-            HasMany::make('infrastructures'),
+            BelongsToMany::make('layouts'),
+            BelongsToMany::make('infrastructures'),
             HasMany::make('multimedia'),
         ];
     }

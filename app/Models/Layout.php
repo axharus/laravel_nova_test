@@ -9,7 +9,16 @@ class Layout extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'title'
+    ];
+
     public function flat(){
-        return $this->belongsTo(Flat::class);
+        return $this->belongsToMany(Flat::class);
     }
+
+//    public function title()
+//    {
+//        return $this->title();
+//    }
 }

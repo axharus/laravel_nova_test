@@ -50,7 +50,7 @@ class Multimedia extends Resource
 
             ID::make(__('ID'), 'id')->sortable(),
             BelongsTo::make('flat'),
-//            Files::make('multimedia'),
+//            Files::make('Multiple files', 'multimedia'),
             File::make('image or video','multimedia'),
 
         ];

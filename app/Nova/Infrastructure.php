@@ -4,6 +4,7 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Gravatar;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Password;
@@ -24,7 +25,7 @@ class Infrastructure extends Resource
      *
      * @var string
      */
-    public static $title = 'id';
+    public static $title = 'title';
 
     /**
      * The columns that should be searched.
@@ -53,7 +54,8 @@ class Infrastructure extends Resource
                 'Shops'=>'Shops',
                 'Lift'=>'Lift',
             ]),
-            BelongsTo::make('flat'),
+//            Text::make('title','title'),
+            BelongsToMany::make('flat'),
         ];
     }
 

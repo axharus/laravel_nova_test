@@ -8,8 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Infrastructure extends Model
 {
     use HasFactory;
+    protected $fillable = [
+      'title'
+    ];
 
-    public function flat(){
-        return $this->belongsTo(Flat::class);
+    public function flat()
+    {
+        return $this->belongsToMany(Flat::class);
     }
+
 }

@@ -4,8 +4,10 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Select;
+use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Layout extends Resource
@@ -22,7 +24,7 @@ class Layout extends Resource
      *
      * @var string
      */
-    public static $title = 'id';
+    public static $title = 'title';
 
     /**
      * The columns that should be searched.
@@ -43,14 +45,15 @@ class Layout extends Resource
     {
         return [
             ID::make(__('ID'), 'id')->sortable(),
-            Select::make('Layout','title')->options([
-                '1+1' => '1+1',
-                '2+1'=>'2+1',
-                '3+1'=>'3+1',
-                'Penthouse'=>'Penthouse',
-
-            ]),
-            BelongsTo::make('flat'),
+//            Select::make('Layout','title')->options([
+//                '1+1' => '1+1',
+//                '2+1'=>'2+1',
+//                '3+1'=>'3+1',
+//                'Penthouse'=>'Penthouse',
+//
+//            ]),
+            Text::make('title'),
+            BelongsToMany::make('flat'),
         ];
     }
 

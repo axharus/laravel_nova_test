@@ -24,15 +24,17 @@ class Flat extends Model
 
     use HasFactory;
 
-    public function layouts(){
-        return $this->hasMany(Layout::class);
+    public function layouts()
+    {
+        return $this->belongsToMany(Layout::class);
     }
 
-    public function infrastructures(){
-        return $this->hasMany(Infrastructure::class);
+    public function infrastructures()
+    {
+        return $this->belongsToMany(Infrastructure::class);
     }
-
-    public function multimedia(){
-        return $this->hasMany(Multimedia::class);
+    public function multimedia()
+    {
+        return $this->HasMany(Multimedia::class);
     }
 }
