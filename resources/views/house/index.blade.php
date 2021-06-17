@@ -1,5 +1,4 @@
 
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -8,8 +7,11 @@
     <meta name="description" content="Simple CMS" />
     <meta name="author" content="Sheikh Heera" />
 
+    <script src="{{ asset('js/app.js') }}" defer></script>
 
-    <title>LaraPress</title>
+    <!-- Styles -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <title>Houses</title>
 
     <!-- Bootstrap core CSS -->
     <link href = {{ asset("bootstrap/css/bootstrap.css") }} rel="stylesheet" />
@@ -24,12 +26,11 @@
 <!-- Responsive navbar-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-        <a class="navbar-brand" href="#!">Start Bootstrap</a>
+        <a class="navbar-brand" href="{{route('home') }}">Merin house</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="">Flats</a></li>
                 <li class="nav-item"><a class="nav-link" href="#!">Contact</a></li>
                 <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Blog</a></li>
             </ul>
@@ -40,8 +41,8 @@
 <header class="py-5 bg-light border-bottom mb-4">
     <div class="container">
         <div class="text-center my-5">
-            <h1 class="fw-bolder">Welcome to Blog Home!</h1>
-            <p class="lead mb-0">A Bootstrap 5 starter layout for your next blog homepage</p>
+            <h1 class="fw-bolder">Недвижимость нашей компании</h1>
+
         </div>
     </div>
 </header>
@@ -51,114 +52,109 @@
         <!-- Blog entries-->
         <div class="col-lg-8">
             <!-- Featured blog post-->
-            <div class="card mb-4">
-                <a href="#!"><img class="card-img-top" src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg" alt="..." /></a>
-                <div class="card-body">
-                    <div class="small text-muted">January 1, 2021</div>
-                    <h2 class="card-title">Featured Post Title</h2>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
-                    <a class="btn btn-primary" href="#!">Read more →</a>
-                </div>
-            </div>
-            <!-- Nested row for non-featured blog posts-->
-            <div class="row">
-                <div class="col-lg-6">
-                    <!-- Blog post-->
-                    <div class="card mb-4">
-                        <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
-                        <div class="card-body">
-                            <div class="small text-muted">January 1, 2021</div>
-                            <h2 class="card-title h4">Post Title</h2>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla.</p>
-                            <a class="btn btn-primary" href="#!">Read more →</a>
+
+            @foreach($paginator as $paginate)
+            <div class="card mb-4" >
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                            </ol>
+                            <div class="carousel-inner">
+                                @foreach($paginate->multimedia as $key => $slider)
+                                    <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
+                                        <img src="{{asset('/storage/'.$slider->multimedia)}}" class="d-block w-100"  alt="...">
+                                    </div>
+                                @endforeach
+                            </div>
+                            <a class="carousel-control-prev" href="#myCarousel" role="button"  data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true">     </span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
                         </div>
                     </div>
-                    <!-- Blog post-->
-                    <div class="card mb-4">
-                        <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
+                    <div class="col-md-8">
                         <div class="card-body">
-                            <div class="small text-muted">January 1, 2021</div>
-                            <h2 class="card-title h4">Post Title</h2>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla.</p>
-                            <a class="btn btn-primary" href="#!">Read more →</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <!-- Blog post-->
-                    <div class="card mb-4">
-                        <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
-                        <div class="card-body">
-                            <div class="small text-muted">January 1, 2021</div>
-                            <h2 class="card-title h4">Post Title</h2>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla.</p>
-                            <a class="btn btn-primary" href="#!">Read more →</a>
-                        </div>
-                    </div>
-                    <!-- Blog post-->
-                    <div class="card mb-4">
-                        <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
-                        <div class="card-body">
-                            <div class="small text-muted">January 1, 2021</div>
-                            <h2 class="card-title h4">Post Title</h2>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam.</p>
-                            <a class="btn btn-primary" href="#!">Read more →</a>
+                            <a href="{{route('house.show',$paginate->id)}}"><h2 class="card-title font-weight-bold">{{$paginate->title}}</h2></a>
+                            <p class="card-text">{{$paginate->description}}</p>
+                            <h3 class="card-text font-weight-bold">від {{$paginate->price}}$</h3>
+                            <p class="card-text">Закінчення побудови {{date('d-M-Y',strtotime($paginate->end_date))}}</p>
+                            <hr />
+                            Планировки:
+                        @foreach($paginate->layouts as $layouts)
+                            {{$layouts->title}},
+                            @endforeach
+                            <p class="card-text">Площа: {{$paginate->square}} m&sup2;</p>
+                            <p class="card-text">Дистанція до моря: {{$paginate->distanceToSea}} м</p>
+
                         </div>
                     </div>
                 </div>
             </div>
+        @endforeach
+
             <!-- Pagination-->
             <nav aria-label="Pagination">
-                <hr class="my-0" />
-                <ul class="pagination justify-content-center my-4">
-                    <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1" aria-disabled="true">Newer</a></li>
-                    <li class="page-item active" aria-current="page"><a class="page-link" href="#!">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#!">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#!">3</a></li>
-                    <li class="page-item disabled"><a class="page-link" href="#!">...</a></li>
-                    <li class="page-item"><a class="page-link" href="#!">15</a></li>
-                    <li class="page-item"><a class="page-link" href="#!">Older</a></li>
-                </ul>
+                @if($paginator->total() > $paginator->count())
+                    <br>
+                    <div class="row justify-content-center">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    {{$paginator}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endif
             </nav>
         </div>
         <!-- Side widgets-->
         <div class="col-lg-4">
-            <!-- Search widget-->
-            <div class="card mb-4">
-                <div class="card-header">Search</div>
-                <div class="card-body">
-                    <div class="input-group">
-                        <input class="form-control" type="text" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search" />
-                        <button class="btn btn-primary" id="button-search" type="button">Go!</button>
-                    </div>
-                </div>
-            </div>
-            <!-- Categories widget-->
-            <div class="card mb-4">
-                <div class="card-header">Categories</div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <ul class="list-unstyled mb-0">
-                                <li><a href="#!">Web Design</a></li>
-                                <li><a href="#!">HTML</a></li>
-                                <li><a href="#!">Freebies</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-sm-6">
-                            <ul class="list-unstyled mb-0">
-                                <li><a href="#!">JavaScript</a></li>
-                                <li><a href="#!">CSS</a></li>
-                                <li><a href="#!">Tutorials</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <!-- Side widget-->
             <div class="card mb-4">
-                <div class="card-header">Side Widget</div>
-                <div class="card-body">You can put anything you want inside of these side widgets. They are easy to use, and feature the Bootstrap 5 card component!</div>
+            <form action="{{route('house.index')}}">
+
+
+
+                <div class="card-header">Етап побудови</div>
+                <div class="card-body">
+                    <select name="built" id="built">
+                        <option value="all">Всі</option>
+                        <option value=">">Будуються</option>
+                        <option value="<">Побудовані</option>
+                    </select>
+                    <br>
+                    <br>
+                    <p>Ціна</p>
+
+                    <select name="price" id="price">
+                        <option value="all">Всі</option>
+                        <option value="0">0-20.000$</option>
+                        <option value="20000">20.000$-39.999$</option>
+                        <option value="40000">40.000$-59.999$</option>
+                        <option value="60000">60.000$-79.999$</option>
+                        <option value="80000">80.000$+</option>
+
+                    </select>
+                    <br>
+                    <br>
+                    <p>Вид планировки</p>
+                    <select name="layouts" id="layouts">
+                        <option value="all">All</option>
+                        <option value="1+1">1+1</option>
+                        <option value="2+1">2+1</option>
+                        <option value="3+1">3+1</option>
+                        <option value="Penthouse">Penthouse</option>
+                    </select>
+                </div>
+                <button type="submit">submit</button>
+            </form>
             </div>
         </div>
     </div>
