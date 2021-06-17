@@ -2,32 +2,20 @@
 
 namespace App\Nova;
 
-
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\BelongsToMany;
-use Laravel\Nova\Fields\Currency;
-use Laravel\Nova\Fields\Date;
-use Laravel\Nova\Fields\DateTime;
-use Laravel\Nova\Fields\Gravatar;
-use Laravel\Nova\Fields\HasMany;
-use Laravel\Nova\Fields\HasManyThrough;
+use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\File;
 use Laravel\Nova\Fields\ID;
-use Laravel\Nova\Fields\Image;
-use Laravel\Nova\Fields\Number;
-use Laravel\Nova\Fields\Password;
-use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\Textarea;
-use NovaAttachMany\AttachMany;
+use Laravel\Nova\Http\Requests\NovaRequest;
 
-class Flat extends Resource
+class RealtyMultimedia extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
-    public static $model = \App\Models\Flat::class;
+    public static $model = \App\Models\RealtyMultimedia::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -55,21 +43,10 @@ class Flat extends Resource
     {
         return [
             ID::make(__('ID'), 'id')->sortable(),
-            Text::make('title'),
-            Textarea::make('description'),
-            Textarea::make('conditions'),
-            Currency::make('price'),
-            Image::make('Location','locationImage')->disk('public'),
-            Number::make('square'),
-            Text::make('Quantity of Balcony','quantityBalcony'),
-            Text::make('Quantity of Bathroom','quantityBathroom'),
-            Number::make( 'distance to sea','distanceToSea'),
-            Date::make('end_date'),
-//            BelongsToMany::make('layouts'),
-//            BelongsToMany::make('infrastructures'),
-            AttachMany::make('layouts', 'layouts', Layout::class),
-            AttachMany::make('infrastructures', 'infrastructures', Infrastructure::class),
-            HasMany::make('multimedia'),
+            BelongsTo::make('realty'),
+//            Files::make('Multiple files', 'multimedia'),
+            File::make('image or video','multimedia'),
+
         ];
     }
 

@@ -2,32 +2,26 @@
 
 namespace App\Nova;
 
-
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Currency;
 use Laravel\Nova\Fields\Date;
-use Laravel\Nova\Fields\DateTime;
-use Laravel\Nova\Fields\Gravatar;
 use Laravel\Nova\Fields\HasMany;
-use Laravel\Nova\Fields\HasManyThrough;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Number;
-use Laravel\Nova\Fields\Password;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
+use Laravel\Nova\Http\Requests\NovaRequest;
 use NovaAttachMany\AttachMany;
 
-class Flat extends Resource
+class Realty extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
-    public static $model = \App\Models\Flat::class;
+    public static $model = \App\Models\Realty::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -65,8 +59,6 @@ class Flat extends Resource
             Text::make('Quantity of Bathroom','quantityBathroom'),
             Number::make( 'distance to sea','distanceToSea'),
             Date::make('end_date'),
-//            BelongsToMany::make('layouts'),
-//            BelongsToMany::make('infrastructures'),
             AttachMany::make('layouts', 'layouts', Layout::class),
             AttachMany::make('infrastructures', 'infrastructures', Infrastructure::class),
             HasMany::make('multimedia'),

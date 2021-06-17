@@ -2,13 +2,10 @@
 
 namespace App\Models;
 
-use App\Filters\QueryFilter;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Scope;
-use Laravel\Nova\Query\Builder;
 
-class Flat extends Model
+class Realty extends Model
 {
     protected $fillable = [
         'title',
@@ -38,7 +35,7 @@ class Flat extends Model
     }
     public function multimedia()
     {
-        return $this->HasMany(Multimedia::class);
+        return $this->HasMany(RealtyMultimedia::class);
     }
 
     /**
@@ -61,10 +58,10 @@ class Flat extends Model
     {
         if ($price !='all')
 
-        if ($price<80000)
-        return $query->where('price','>',$price)->where('price','<',$price+20000);
-        else
-            return $query->where('price','>',$price);
+            if ($price<80000)
+                return $query->where('price','>',$price)->where('price','<',$price+20000);
+            else
+                return $query->where('price','>',$price);
     }
     /**
      * Scope a query to only include popular users.
@@ -75,15 +72,16 @@ class Flat extends Model
     public function scopeLayout($query,$title)
     {
         if($title != 'all')
-        return $query->whereHas('layouts', function ($q) use($title){
-            return $q->where('title', $title);
-        });
+            return $query->whereHas('layouts', function ($q) use($title){
+                return $q->where('title', $title);
+            });
 
     }
 
     public function scopeBuilt($query,$operator)
     {
         if($operator != 'all')
-        return $query->where('end_date',$operator,now());
+            return $query->where('end_date',$operator,now());
     }
+    use HasFactory;
 }

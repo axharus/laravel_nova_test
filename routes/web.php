@@ -8,11 +8,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['namespace'=>'App\Http\Controllers','prefix'=>'house'],function (){
-    $methods = ['index','show'];
-    Route::resource('index','HouseController')->only($methods)->names('house');
+Route::get('/home', [\App\Http\Controllers\HomeController::class, 'home'])->name('home');
 
-});
+Route::get('flat/index',[\App\Http\Controllers\FlatIndexController::class, 'index'])->name('flat.index');
+Route::get('flat/show/{id}',[\App\Http\Controllers\FlatShowController::class, 'show'])->name('flat.show');
 
-Route::get('/home', [\App\Http\Controllers\HouseController::class, 'home'])->name('home');
-Route::get('/filter', [\App\Http\Controllers\HouseController::class, 'filter'])->name('filter');
+Route::get('realty/index',[\App\Http\Controllers\RealtyIndexController::class,'index'])->name('realty.index');
+Route::get('realty/show/{id}',[\App\Http\Controllers\RealtyShowController::class,'show'])->name('realty.show');
+Route::get('blog/index',[\App\Http\Controllers\BlogIndexController::class,'index'])->name('blog.index');
+Route::get('blog/show/{id}',[\App\Http\Controllers\BlogShowController::class,'show'])->name('blog.show');
+//Auth::routes();
+
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -7,6 +7,8 @@
     "require": {
         "php": "^7.3|^8.0",
         "coderello/laravel-nova-lang": "^1.7",
+        "digital-creative/custom-relationship-field": "^0.1.6",
+        "dillingham/nova-attach-many": "^1.3",
         "ebess/advanced-nova-media-library": "^3.6",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",

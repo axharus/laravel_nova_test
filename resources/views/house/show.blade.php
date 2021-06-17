@@ -1,25 +1,5 @@
-<script src="{{ asset('js/app.js') }}" defer></script>
-
-<!-- Styles -->
-<link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
-<!-- Bootstrap core CSS -->
-<link href = {{ asset("bootstrap/css/bootstrap.css") }} rel="stylesheet" />
-
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container">
-        <a class="navbar-brand" href="{{ route('home') }}">Merin house</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                <li class="nav-item"><a class="nav-link" href="">Flats</a></li>
-                <li class="nav-item"><a class="nav-link" href="#!">Contact</a></li>
-                <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Blog</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
-
+@extends('layouts.app')
+@section('content')
 <div class="container mt-5">
     <div class="row">
         <div class="col-lg-8">
@@ -27,7 +7,7 @@
             <article>
 
                 <header class="mb-4">
-                    <p><a href="{{url('/')}}">Головна</a>/<a href="{{route('house.index')}}">Будинки</a>/{{$item->title}}</p>
+                    <p><a href="{{url('/')}}">Головна</a>/<a href="{{route('flat.index')}}">Будинки</a>/{{$item->title}}</p>
                     <h1 class="fw-bolder mb-1">{{$item->title}}</h1>
                 </header>
                 <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -130,3 +110,4 @@
         </div>
     </div>
 </div>
+@endsection
