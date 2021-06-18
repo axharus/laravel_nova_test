@@ -7,12 +7,12 @@ use App\Models\Flat;
 class FlatShowController extends Controller
 {
 
-    public function show($id)
+    public function single(Request $request)
     {
 
-        $item = Flat::findOrFail($id);
+        $item = Flat::where('slug',$request->route()->parametersWithoutNulls()['slug'])->first();
 
 
-        return view('house.show',compact('item'));
+        return view('flat.show',compact('item'));
     }
 }

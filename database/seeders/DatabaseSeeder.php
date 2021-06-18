@@ -2,10 +2,13 @@
 
 namespace Database\Seeders;
 
+use App\Models\Complex;
+use App\Models\Flat;
 use App\Models\Infrastructure;
 use App\Models\Layout;
 use App\Models\Post;
 use App\Models\Realty;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -17,10 +20,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\Flat::factory(100)->create();
+        Complex::factory(10)->create();
+        Flat::factory(100)->create();
         Infrastructure::factory(5)->create();
         Layout::factory(5)->create();
         Post::factory(50)->create();
-        Realty::factory(100)->create();
+        User::factory(10)->create();
+
     }
 }

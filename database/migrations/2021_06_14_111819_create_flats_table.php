@@ -16,6 +16,7 @@ class CreateFlatsTable extends Migration
         Schema::create('flats', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
+            $table->string('slug')->unique();
             $table->longText('description');
             $table->integer('price');
             $table->longText('conditions');
@@ -26,6 +27,9 @@ class CreateFlatsTable extends Migration
             $table->integer('distanceToSea');
             $table->date('end_date');
 
+            $table->integer('complex_id')->unsigned();
+
+            $table->foreign('complex_id')->references('id')->on('complexes');
             $table->timestamps();
         });
     }

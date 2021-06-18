@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Nova;
+use Ebess\AdvancedNovaMediaLibrary\Fields\Images;
+use Emilianotisato\NovaTinyMCE\NovaTinyMCE;
 use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Text;
-
+use Ebess\AdvancedNovaMediaLibrary\Fields\Files;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
 
@@ -46,8 +48,10 @@ class Post extends Resource
         return [
             ID::make(__('ID'), 'id')->sortable(),
             Text::make('title'),
-            Textarea::make('Content Raw','content_raw'),
-            Image::make('image'),
+            Images::make('Main image', 'post_image'),
+            NovaTinyMCE::make('Content Raw','content_raw')->options([
+                'height' => '580'
+            ]),
 
 
         ];

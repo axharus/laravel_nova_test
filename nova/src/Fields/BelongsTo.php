@@ -134,7 +134,7 @@ class BelongsTo extends Field implements RelatableField
     /**
      * Determine if the field is not redundant.
      *
-     * Ex: Is this a "user" belongs to field in a blog post list being shown on the "user" detail page.
+     * Ex: Is this a "user" belongs to field in a post post list being shown on the "user" detail page.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return bool

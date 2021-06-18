@@ -3,11 +3,13 @@
 namespace App\Nova;
 
 
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+
+use Ebess\AdvancedNovaMediaLibrary\Fields\Images;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Currency;
 use Laravel\Nova\Fields\Date;
+use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\Gravatar;
 use Laravel\Nova\Fields\HasMany;
@@ -65,11 +67,10 @@ class Flat extends Resource
             Text::make('Quantity of Bathroom','quantityBathroom'),
             Number::make( 'distance to sea','distanceToSea'),
             Date::make('end_date'),
-//            BelongsToMany::make('layouts'),
-//            BelongsToMany::make('infrastructures'),
+            BelongsTo::make('complex','complex',Complex::class),
             AttachMany::make('layouts', 'layouts', Layout::class),
             AttachMany::make('infrastructures', 'infrastructures', Infrastructure::class),
-            HasMany::make('multimedia'),
+            Images::make('Images','flat_image'),
         ];
     }
 

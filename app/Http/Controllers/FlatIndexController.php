@@ -36,7 +36,7 @@ class FlatIndexController extends Controller
         } else
             $product = Flat::orderBy('id', 'desc')->paginate(5);
 
-        return view('house.index', [
+        return view('flat.index', [
             'paginator' => $product
         ]);
 

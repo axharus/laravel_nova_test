@@ -26,11 +26,11 @@
                                             <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
                                         </ol>
                                         <div class="carousel-inner">
-                                            @foreach($item->multimedia as $keyImage => $sliderImage)
-                                                @if($keyImage == 0)
-                                                    <img src="{{asset('/storage/'.$sliderImage->multimedia)}}" class="d-block w-100"  alt="...">
-                                                @endif
-                                            @endforeach
+{{--                                            @foreach($item->multimedia as $keyImage => $sliderImage)--}}
+{{--                                                @if($keyImage == 0)--}}
+{{--                                                    <img src="{{asset('/storage/'.$sliderImage->multimedia)}}" class="d-block w-100"  alt="...">--}}
+{{--                                                @endif--}}
+{{--                                            @endforeach--}}
                                         </div>
 {{--                                        <a class="carousel-control-prev" href="#myCarousel" role="button"  data-slide="prev">--}}
 {{--                                            <span class="carousel-control-prev-icon" aria-hidden="true">     </span>--}}
@@ -44,7 +44,7 @@
                                 </div>
                                 <div class="col-md-8">
                                     <div class="card-body">
-                                        <a href="{{route('flat.show',$item->id)}}"><h2 class="card-title font-weight-bold">{{$item->title}}</h2></a>
+                                        <a href="{{route('flat.single',$item->slug)}}"><h2 class="card-title font-weight-bold">{{$item->title}}</h2></a>
                                         <p class="card-text">{{$item->description}}</p>
                                         <h3 class="card-text font-weight-bold">від {{$item->price}}$</h3>
                                         <p class="card-text">Закінчення побудови {{date('d-M-Y',strtotime($item->end_date))}}</p>

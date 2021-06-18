@@ -2,14 +2,18 @@
 
 namespace App\Models;
 
-use App\Filters\QueryFilter;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Scope;
 use Laravel\Nova\Query\Builder;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class Flat extends Model
+class Flat extends Model implements HasMedia
 {
+    use InteractsWithMedia;
+    use HasFactory;
     protected $fillable = [
         'title',
         'description',
@@ -25,7 +29,12 @@ class Flat extends Model
         'end_date'=>'date'
     ];
 
-    use HasFactory;
+
+
+    public function complex()
+    {
+        return $this->belongsTo(Complex::class,'complex_id','id');
+    }
 
     public function layouts()
     {
@@ -36,27 +45,20 @@ class Flat extends Model
     {
         return $this->belongsToMany(Infrastructure::class);
     }
-    public function multimedia()
+    public function registerMediaConversions(Media $media = null): void
     {
-        return $this->HasMany(Multimedia::class);
+        $this->addMediaConversion('thumb')
+            ->width(130)
+            ->height(130);
     }
 
-    /**
-     * Scope a query to only include popular users.
-     *
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
-//    public function scopeFilter($query,$operator)
-//    {
-//        return $query->where('end_date',$operator,now());
-//    }
-    /**
-     * Scope a query to only include popular users.
-     *
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
+    public function registerMediaCollections(): void
+    {
+//        $this->addMediaCollection('flat_image')->singleFile();
+        $this->addMediaCollection('my_multi_collection');
+    }
+
+
     public function scopePrice($query,$price)
     {
         if ($price !='all')
@@ -66,12 +68,7 @@ class Flat extends Model
         else
             return $query->where('price','>',$price);
     }
-    /**
-     * Scope a query to only include popular users.
-     *
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
+
     public function scopeLayout($query,$title)
     {
         if($title != 'all')
