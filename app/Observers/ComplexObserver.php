@@ -4,6 +4,7 @@
 namespace App\Observers;
 
 
+use App\Heplers\Slug;
 use App\Models\Complex;
 use Illuminate\Support\Str;
 
@@ -11,7 +12,7 @@ class ComplexObserver
 {
     public function creating(Complex $complex)
     {
-        $this->setSlug($complex);
+        $complex->slug = Slug::getSlug($complex->title,'complexes');
     }
 
     public function updating(Complex $complex)

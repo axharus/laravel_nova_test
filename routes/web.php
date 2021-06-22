@@ -1,13 +1,16 @@
 <?php
 
-use App\Http\Controllers\PostController;
-use App\Http\Controllers\FlatIndexController;
-use App\Http\Controllers\FlatShowController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\ComplexIndexController;
-use App\Http\Controllers\ComplexShowController;
-use Illuminate\Support\Facades\Route;
 
+
+use App\Http\Controllers\FlatShowController;
+
+
+use App\Http\Controllers\site\ComplexIndexController;
+use App\Http\Controllers\site\ComplexShowController;
+use App\Http\Controllers\site\FlatIndexController;
+use App\Http\Controllers\site\HomeController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\site\PostController;
 
 
 Route::get('/', function () {

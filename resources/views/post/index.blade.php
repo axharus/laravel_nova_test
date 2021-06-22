@@ -22,7 +22,6 @@
                     <div class="card-body">
                         <div class="small text-muted">{{$paginate->created_at}}</div>
                         <h2 class="card-title">{{$paginate->title}}</h2>
-
                         <a class="btn btn-primary" href="{{route('post.single',$paginate->slug)}}">Read more →</a>
                     </div>
                 </div>

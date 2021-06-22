@@ -22,12 +22,13 @@ class CreateFlatsTable extends Migration
             $table->longText('conditions');
             $table->string('quantityBalcony');
             $table->string('quantityBathroom');
-            $table->string('locationImage')->nullable();
+            $table->string('address_latitude')->nullable();
+            $table->string('address_longitude')->nullable();
             $table->integer('square');
             $table->integer('distanceToSea');
             $table->date('end_date');
 
-            $table->integer('complex_id')->unsigned();
+            $table->integer('complex_id')->unsigned()->nullable();
 
             $table->foreign('complex_id')->references('id')->on('complexes');
             $table->timestamps();

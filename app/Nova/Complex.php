@@ -2,8 +2,12 @@
 
 namespace App\Nova;
 
+use Benjacho\BelongsToManyField\BelongsToManyField;
 use Ebess\AdvancedNovaMediaLibrary\Fields\Files;
 use Ebess\AdvancedNovaMediaLibrary\Fields\Images;
+use Eminiarts\Tabs\Tab;
+use Eminiarts\Tabs\Tabs;
+use Eminiarts\Tabs\TabsOnEdit;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Currency;
@@ -19,6 +23,8 @@ use NovaAttachMany\AttachMany;
 
 class Complex extends Resource
 {
+    use TabsOnEdit;
+
     /**
      * The model the resource corresponds to.
      *
@@ -31,7 +37,7 @@ class Complex extends Resource
      *
      * @var string
      */
-    public static $title = 'id';
+    public static $title = 'title';
 
     /**
      * The columns that should be searched.
@@ -51,18 +57,35 @@ class Complex extends Resource
     public function fields(Request $request)
     {
         return [
-            ID::make(__('ID'), 'id')->sortable(),
-            Text::make('title'),
-            Images::make('Images','complex_image'),
-            Textarea::make('description'),
-            Textarea::make('conditions'),
-            Currency::make('price'),
-            Image::make('Location','locationImage')->disk('public'),
-            Number::make('square'),
-            Number::make( 'distance to sea','distanceToSea'),
-            Date::make('end_date'),
+            Tabs::make('Complex',[
+                Tab::make('Main',[
+                    ID::make(__('ID'), 'id')->sortable(),
+                    Text::make('title'),
+                    Textarea::make('description'),
+                    Textarea::make('conditions'),
+                    Currency::make('price'),
+                ]),
+                Tab::make('Additional',[
+                    Text::make('Довгота','address_longitude'),
+                    Text::make('Широта','address_latitude'),
+                    Number::make('square'),
+                    Number::make( 'distance to sea','distanceToSea'),
+                    Date::make('end_date'),
+                    BelongsToManyField::make('flats','flats',Flat::class)
+                        ->options(\App\Models\Flat::query()->where('complex_id','=',NULL)->orWhere('complex_id','=',$this->id)->get())
+                        ->hideFromIndex(),
+//                    AttachMany::make('flats','flats',Flat::class)->showPreview()
+//                        ->rules('min:1',\App\Models\Flat::query()
+//                            ->where('complex_id','=',NULL)
+//                            ->orWhere('complex_id','=',$this->id)
+//                            ->get())
+                ]),
+                Tab::make('Media',[
+                    Images::make('Images','complex_image'),
+                ]),
+            ]),
 
-            ];
+        ];
     }
 
     /**

@@ -1,22 +1,14 @@
 <?php
+namespace App\Http\Controllers\site;
+use App\Http\Controllers\Controller;
 
-namespace App\Http\Controllers;
-
-use Illuminate\Database\Eloquent\Scope;
-use App\Models\Flat;
+use App\Models\Complex;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
-class FlatIndexController extends Controller
+class ComplexIndexController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index(Request $request)
     {
-
         $inputs = [
             //layout - scope. $request->layouts - текст з форми
             'built' => $request->built,
@@ -26,7 +18,7 @@ class FlatIndexController extends Controller
         ];
 
         if ($inputs['built'] != null) {
-            $query = Flat::query();
+            $query = Complex::query();
 
             foreach ($inputs as $key => $item) {
                 $query = $query->$key($item);
@@ -34,9 +26,9 @@ class FlatIndexController extends Controller
 
             $product = $query->orderBy('id', 'desc')->paginate(5);
         } else
-            $product = Flat::orderBy('id', 'desc')->paginate(5);
+            $product = Complex::orderBy('id', 'desc')->paginate(5);
 
-        return view('flat.index', [
+        return view('complex.index', [
             'paginator' => $product
         ]);
 

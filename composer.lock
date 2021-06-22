@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ad071eb53e8fffa63e8663c7ed7edcc6",
+    "content-hash": "db98240a84858af3b4caf6d5e319c378",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -61,6 +61,53 @@
                 "source": "https://github.com/asm89/stack-cors/tree/v2.0.3"
             },
             "time": "2021-03-11T06:42:03+00:00"
+        },
+        {
+            "name": "benjacho/belongs-to-many-field",
+            "version": "1.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Benjacho/belongs-to-many-field-nova.git",
+                "reference": "d50fb24b781f997ba53084e1180a4a7b623727cc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Benjacho/belongs-to-many-field-nova/zipball/d50fb24b781f997ba53084e1180a4a7b623727cc",
+                "reference": "d50fb24b781f997ba53084e1180a4a7b623727cc",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Benjacho\\BelongsToManyField\\FieldServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Benjacho\\BelongsToManyField\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "belongsToMany nova representation in field.",
+            "keywords": [
+                "Many to Many Field",
+                "belongsToMany",
+                "laravel",
+                "nova"
+            ],
+            "support": {
+                "issues": "https://github.com/Benjacho/belongs-to-many-field-nova/issues",
+                "source": "https://github.com/Benjacho/belongs-to-many-field-nova/tree/1.9"
+            },
+            "time": "2021-04-24T23:29:38+00:00"
         },
         {
             "name": "brick/math",
@@ -1121,6 +1168,65 @@
                 "source": "https://github.com/emilianotisato/nova-tinymce/tree/1.2.1"
             },
             "time": "2021-03-26T17:52:28+00:00"
+        },
+        {
+            "name": "eminiarts/nova-tabs",
+            "version": "1.4.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/eminiarts/nova-tabs.git",
+                "reference": "24db671bf3163efccfbf12874abb0796cbc82e1b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/eminiarts/nova-tabs/zipball/24db671bf3163efccfbf12874abb0796cbc82e1b",
+                "reference": "24db671bf3163efccfbf12874abb0796cbc82e1b",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "laravel/nova": ">=2.9.0",
+                "php": ">=7.1.3"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.17",
+                "orchestra/testbench": "^6.7"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Eminiarts\\Tabs\\TabsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Eminiarts\\Tabs\\": "src/",
+                    "Eminiarts\\Tabs\\Tests\\": "tests/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Emini Arts GmbH",
+                    "email": "support@eminiarts.ch",
+                    "homepage": "https://eminiarts.ch"
+                }
+            ],
+            "description": "Laravel Nova - Tabs.",
+            "keywords": [
+                "laravel",
+                "nova"
+            ],
+            "support": {
+                "issues": "https://github.com/eminiarts/nova-tabs/issues",
+                "source": "https://github.com/eminiarts/nova-tabs/tree/1.4.3"
+            },
+            "time": "2021-03-07T13:05:22+00:00"
         },
         {
             "name": "fideloper/proxy",

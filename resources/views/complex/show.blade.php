@@ -15,11 +15,6 @@
                             <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
                         </ol>
                         <div class="carousel-inner">
-{{--                            @foreach($item->multimedia as $key => $slider)--}}
-{{--                                <div class="carousel-item {{$key == 0 ? 'active' : '' }}">--}}
-{{--                                    <img src="{{asset('/storage/'.$slider->multimedia)}}" class="d-block w-100"  alt="...">--}}
-{{--                                </div>--}}
-{{--                            @endforeach--}}
                         </div>
                         <a class="carousel-control-prev" href="#myCarousel" role="button"  data-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true">     </span>
@@ -34,10 +29,13 @@
                     <section class="mb-5">
                         <p class="card-text">Закінчення побудови {{date('d-M-Y',strtotime($item->end_date))}}</p>
                         <p>
-{{--                            Планировки:--}}
-{{--                            @foreach($item->layouts as $layouts)--}}
-{{--                                {{$layouts->title}},--}}
-{{--                            @endforeach--}}
+                            Планировки:
+
+                            @foreach($item->flats as $layouts)
+                              @foreach($layouts->layouts as $lay)
+                                {{$lay->title}}
+                                @endforeach
+                            @endforeach
                         </p>
                         <p class="card-text">Площа: {{$item->square}} m&sup2;</p>
                         <p class="card-text">Дистанція до моря: {{$item->distanceToSea}} м</p>

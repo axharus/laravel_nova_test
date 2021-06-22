@@ -34,7 +34,7 @@ class FlatFactory extends Factory
             'square'=>$this->faker->numberBetween(20,500),
             'distanceToSea'=>$this->faker->numberBetween(0,1000),
             'end_date'=>$this->faker->dateTimeBetween('-1 year', '1 year'),
-            'complex_id'=>rand(1,10),
+            'complex_id'=>rand(1,5),
         ];
     }
 }

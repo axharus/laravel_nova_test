@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\site;
 
+use App\Http\Controllers\Controller;
 use App\Models\Flat;
 use Illuminate\Http\Request;
 

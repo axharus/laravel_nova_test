@@ -1,6 +1,7 @@
 <?php
 namespace App\Observers;
 
+use App\Heplers\Slug;
 use App\Models\Flat;
 use Illuminate\Support\Str;
 
@@ -8,7 +9,7 @@ class FlatObserver
 {
     public function creating(Flat $flat)
     {
-        $this->setSlug($flat);
+        $flat->slug = Slug::getSlug($flat->title,'flats');
     }
 
     public function updating(Flat $flat)
