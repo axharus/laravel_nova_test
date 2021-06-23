@@ -27,7 +27,7 @@ class Flat extends Model implements HasMedia
 
     protected $casts =[
         'end_date'=>'date',
-
+        'map'     =>'array',
     ];
 
 

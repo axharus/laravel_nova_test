@@ -20,8 +20,7 @@ class CreateComplexesTable extends Migration
             $table->longText('description');
             $table->integer('price');
             $table->longText('conditions');
-            $table->string('address_latitude')->nullable();
-            $table->string('address_longitude')->nullable();
+            $table->string('map')->nullable();
             $table->integer('square');
             $table->integer('distanceToSea');
             $table->date('end_date');

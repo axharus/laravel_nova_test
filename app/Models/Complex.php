@@ -13,11 +13,12 @@ class Complex extends Model implements HasMedia
     use HasFactory;
     use InteractsWithMedia;
     protected $casts =[
-        'end_date'=>'date'
+        'end_date'=>'date',
+        'map'     =>'array'
     ];
     public function flats()
     {
-        return $this->hasMany(Flat::class,'complex_id','id');
+        return $this->hasMany(Flat::class);
     }
 
     public function registerMediaConversions(Media $media = null): void

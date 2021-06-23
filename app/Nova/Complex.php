@@ -2,16 +2,16 @@
 
 namespace App\Nova;
 
-use Benjacho\BelongsToManyField\BelongsToManyField;
-use Ebess\AdvancedNovaMediaLibrary\Fields\Files;
+
 use Ebess\AdvancedNovaMediaLibrary\Fields\Images;
 use Eminiarts\Tabs\Tab;
 use Eminiarts\Tabs\Tabs;
 use Eminiarts\Tabs\TabsOnEdit;
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\BelongsTo;
+
 use Laravel\Nova\Fields\Currency;
 use Laravel\Nova\Fields\Date;
+
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Image;
@@ -20,6 +20,7 @@ use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use NovaAttachMany\AttachMany;
+use NovaItemsField\Items;
 
 class Complex extends Resource
 {
@@ -66,19 +67,22 @@ class Complex extends Resource
                     Currency::make('price'),
                 ]),
                 Tab::make('Additional',[
-                    Text::make('Довгота','address_longitude'),
-                    Text::make('Широта','address_latitude'),
+                    Items::make('map')
+                        ->max(2)
+                        ->placeholder('Input coordinate')
+                        ->listFirst(),
                     Number::make('square'),
                     Number::make( 'distance to sea','distanceToSea'),
                     Date::make('end_date'),
-                    BelongsToManyField::make('flats','flats',Flat::class)
-                        ->options(\App\Models\Flat::query()->where('complex_id','=',NULL)->orWhere('complex_id','=',$this->id)->get())
-                        ->hideFromIndex(),
-//                    AttachMany::make('flats','flats',Flat::class)->showPreview()
+//                    BelongsToManyField::make('flats','flats',Flat::class)
+//                        ->options(\App\Models\Flat::query()->where('complex_id','=',NULL)->orWhere('complex_id','=',$this->id)->get())
+//                        ->hideFromIndex(),
+//                    AttachMany::make('flats','flats',Flat::class)->showPreview(),
 //                        ->rules('min:1',\App\Models\Flat::query()
 //                            ->where('complex_id','=',NULL)
 //                            ->orWhere('complex_id','=',$this->id)
 //                            ->get())
+//                HasMany::make('flats'),
                 ]),
                 Tab::make('Media',[
                     Images::make('Images','complex_image'),

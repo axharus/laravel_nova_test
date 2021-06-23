@@ -38,6 +38,7 @@
                     @foreach($item->layouts as $layouts)
                         {{$layouts->title}},
                     @endforeach
+
                     </p>
                     <p class="card-text">Площа: {{$item->square}} m&sup2;</p>
                     <p class="card-text">Дистанція до моря: {{$item->distanceToSea}} м</p>

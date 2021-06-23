@@ -22,6 +22,7 @@ use Laravel\Nova\Fields\Password;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
 use NovaAttachMany\AttachMany;
+use NovaItemsField\Items;
 
 class Flat extends Resource
 {
@@ -75,7 +76,10 @@ class Flat extends Resource
                     Images::make('Images','flat_image'),
                 ]),
                 Tab::make('Advanced',[
-                    Image::make('Location','locationImage')->disk('public'),
+                    Items::make('map')
+                        ->max(2)
+                        ->placeholder('Input coordinate')
+                        ->listFirst(),
                     Number::make('square'),
                     Text::make('Quantity of Balcony','quantityBalcony'),
                     Text::make('Quantity of Bathroom','quantityBathroom'),

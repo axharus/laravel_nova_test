@@ -2,27 +2,34 @@
 
 namespace App\Nova;
 
-
+use App\Nova\Pages\About;
+use App\Nova\Pages\Contacts;
+use App\Nova\Pages\Index;
+use App\Nova\Pages\Service;
+use Eminiarts\Tabs\TabsOnEdit;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
-use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Http\Requests\NovaRequest;
+use Whitecube\NovaFlexibleContent\Concerns\HasFlexible;
+use function App\Nova\Flexible\Layouts\fields;
 
-
-class Service extends Resource
+class Page extends Resource
 {
+    use TabsOnEdit;
+    use HasFlexible;
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
-    public static $model = \App\Models\Service::class;
+    public static $model = \App\Models\Page::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    public static $title = 'id';
+    public static $title = 'name';
 
     /**
      * The columns that should be searched.
@@ -30,7 +37,7 @@ class Service extends Resource
      * @var array
      */
     public static $search = [
-        'id',
+        'name',
     ];
 
     /**
@@ -41,10 +48,17 @@ class Service extends Resource
      */
     public function fields(Request $request)
     {
+        if ($this->key == 'about')
+            return (new About())->fields();
+        elseif ($this->key == 'contacts')
+            return (new Contacts())->fields();
+        elseif ($this->key == 'index')
+            return (new Index())->fields();
+        elseif ($this->key == 'service')
+            return (new Service())->fields();
+
         return [
             ID::make(__('ID'), 'id')->sortable(),
-            Text::make('key'),
-            Text::make('value'),
         ];
     }
 

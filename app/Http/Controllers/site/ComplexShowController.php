@@ -9,8 +9,6 @@ class ComplexShowController extends Controller
     public function single(Request $request)
     {
         $item = Complex::where('slug',$request->route()->parametersWithoutNulls()['slug'])->first();
-
-
         return view('complex.show',compact('item'));
     }
 }

@@ -1,10 +1,7 @@
 <?php
 
 
-
-use App\Http\Controllers\FlatShowController;
-
-
+use App\Http\Controllers\site\FlatShowController;
 use App\Http\Controllers\site\ComplexIndexController;
 use App\Http\Controllers\site\ComplexShowController;
 use App\Http\Controllers\site\FlatIndexController;

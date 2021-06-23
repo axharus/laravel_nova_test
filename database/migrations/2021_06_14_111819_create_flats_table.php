@@ -22,8 +22,8 @@ class CreateFlatsTable extends Migration
             $table->longText('conditions');
             $table->string('quantityBalcony');
             $table->string('quantityBathroom');
-            $table->string('address_latitude')->nullable();
-            $table->string('address_longitude')->nullable();
+            $table->string('map')->nullable();
+
             $table->integer('square');
             $table->integer('distanceToSea');
             $table->date('end_date');
