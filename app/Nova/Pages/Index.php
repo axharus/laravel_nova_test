@@ -22,7 +22,7 @@ class Index
             Text::make('name'),
 
 
-            Tabs::make('Contacts',[
+            Tabs::make('Index',[
                 Tab::make('Main',[
                     Text::make('title','data->title')->hideFromIndex(),
                     Markdown::make('Why Mersin?','data->why_mersin')->hideFromIndex(),

@@ -14,16 +14,16 @@ class ComplexObserver
     {
         $complex->slug = Slug::getSlug($complex->title,'complexes');
     }
+//
+//    public function updating(Complex $complex)
+//    {
+//        $this->setSlug($complex);
+//    }
 
-    public function updating(Complex $complex)
-    {
-        $this->setSlug($complex);
-    }
-
-    public function setSlug(Complex $complex)
-    {
-        if(empty($complex->slug)){
-            $complex->slug = Str::slug($complex->title);
-        }
-    }
+//    public function setSlug(Complex $complex)
+//    {
+//        if(empty($complex->slug)){
+//            $complex->slug = Str::slug($complex->title);
+//        }
+//    }
 }

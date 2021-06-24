@@ -63,7 +63,6 @@ class Flat extends Model implements HasMedia
     public function scopePrice($query,$price)
     {
         if ($price !='all')
-
         if ($price<80000)
         return $query->where('price','>',$price)->where('price','<',$price+20000);
         else

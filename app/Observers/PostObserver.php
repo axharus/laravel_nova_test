@@ -14,15 +14,15 @@ class PostObserver
 //        $this->setSlug($post);
     }
 
-    public function updating(Post $post)
-    {
-        $this->setSlug($post);
-    }
-
-    public function setSlug(Post $post)
-    {
-        if(empty($post->slug)){
-            $post->slug = Str::slug($post->title);
-        }
-    }
+//    public function updating(Post $post)
+//    {
+//        $this->setSlug($post);
+//    }
+//
+//    public function setSlug(Post $post)
+//    {
+//        if(empty($post->slug)){
+//            $post->slug = Str::slug($post->title);
+//        }
+//    }
 }
